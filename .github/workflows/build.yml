@@ -1,0 +1,77 @@
+```yaml
+name: Build RBLXA
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: Code/Code
+
+jobs:
+  build:
+    name: Windows x64 Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Build
+        run: cargo build --release --target x86_64-pc-windows-msvc
+
+      - name: Verify executable
+        shell: powershell
+        run: |
+          $exe = "target\x86_64-pc-windows-msvc\release\rblxa.exe"
+
+          if (-not (Test-Path $exe)) {
+            Write-Error "Missing executable: $exe"
+            exit 1
+          }
+
+          Write-Host "Build successful:"
+          Write-Host (Resolve-Path $exe)
+
+      - name: Package
+        shell: powershell
+        run: |
+          $exe = "target\x86_64-pc-windows-msvc\release\rblxa.exe"
+          $zip = "rblxa-windows-x64.zip"
+
+          if (Test-Path $zip) {
+            Remove-Item $zip -Force
+          }
+
+          Compress-Archive `
+            -Path $exe `
+            -DestinationPath $zip `
+            -CompressionLevel Optimal
+
+          Write-Host "Package created:"
+          Write-Host (Resolve-Path $zip)
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rblxa-windows-x64
+          path: Code/Code/rblxa-windows-x64.zip
+          if-no-files-found: error
+          retention-days: 14
+```

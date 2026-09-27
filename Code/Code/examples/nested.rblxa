@@ -1,0 +1,32 @@
+[place.meta.data]
+name = "RBLXA Nested Example"
+version = "1.0.0"
+
+[place.settings]
+gravity = 196.2
+
+[[model]]
+id = "map"
+name = "Map"
+parent = "Workspace"
+
+[[model]]
+id = "house"
+name = "House"
+parent = "Workspace.Map"
+
+[[part]]
+id = "floor"
+name = "Floor"
+parent = "Workspace.Map.House"
+position = [0, 0, 0]
+size = [20, 1, 20]
+anchored = true
+
+[[part]]
+id = "door"
+name = "Door"
+parent = "house"
+position = [0, 4, 9]
+size = [4, 8, 1]
+anchored = true

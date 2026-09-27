@@ -1,0 +1,59 @@
+[place.meta.data]
+name = "RBLXA Demo"
+version = "1.0.0"
+creator = "RBLXA"
+description = "A place generated from TOML-like RBLXA source."
+
+[place.settings]
+gravity = 196.2
+streaming_enabled = true
+
+[[part]]
+id = "floor"
+name = "Floor"
+parent = "Workspace"
+position = [0, 0, 0]
+size = [50, 1, 50]
+anchored = true
+color = "#4CAF50"
+
+[[part]]
+id = "spawn_pad"
+name = "SpawnPad"
+parent = "Workspace"
+position = [0, 3, 0]
+size = [10, 1, 10]
+anchored = true
+color = [255, 255, 255]
+
+[model]
+id = "house"
+name = "House"
+parent = "Workspace"
+
+[[part]]
+id = "wall"
+name = "Wall"
+parent = "house"
+position = [0, 5, 10]
+size = [20, 10, 1]
+anchored = true
+color = "#CCCCCC"
+
+[script]
+id = "main_server"
+name = "Main"
+parent = "ServerScriptService"
+type = "Script"
+source = """
+print(\"Hello from RBLXA\")
+"""
+
+[[3D.Object.File]]
+id = "tree"
+name = "Tree"
+parent = "Workspace"
+path = "models/tree.obj"
+format = "obj"
+position = [10, 0, 10]
+scale = [1, 1, 1]

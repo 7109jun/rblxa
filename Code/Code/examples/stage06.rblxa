@@ -1,0 +1,32 @@
+[place.meta.data]
+name = "RBLXA Script Demo"
+version = "1.0.0"
+creator = "RBLXA"
+
+[[script]]
+id = "server"
+name = "Server"
+parent = "ServerScriptService"
+type = "Script"
+path = "scripts/server.luau"
+
+[[script]]
+id = "module"
+name = "Config"
+parent = "ReplicatedStorage"
+type = "ModuleScript"
+source = """
+return {
+    Version = 1,
+    Name = "RBLXA"
+}
+"""
+
+[[script]]
+id = "client"
+name = "Client"
+parent = "StarterPlayer"
+type = "LocalScript"
+source = """
+print("Client ready")
+"""

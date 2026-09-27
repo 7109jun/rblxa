@@ -1,0 +1,56 @@
+[place.meta.data]
+name = "RBLXA Buildable Demo"
+version = "1.0.0"
+creator = "RBLXA"
+
+[place.settings]
+gravity = 196.2
+streaming_enabled = true
+
+[[part]]
+id = "floor"
+name = "Floor"
+parent = "Workspace"
+position = [0, 0, 0]
+size = [50, 1, 50]
+anchored = true
+material = "Grass"
+color = "#4CAF50"
+
+[[part]]
+id = "wall"
+name = "Wall"
+parent = "Workspace"
+position = [0, 5, 10]
+size = [20, 10, 1]
+rotation = [0, 15, 0]
+anchored = true
+can_collide = true
+color = "#CCCCCC"
+
+[meshpart]
+id = "mesh"
+name = "Mesh"
+parent = "Workspace"
+mesh_id = "rbxassetid://123456789"
+texture_id = "rbxassetid://987654321"
+position = [5, 2, 5]
+size = [4, 4, 4]
+anchored = true
+
+[sound]
+id = "music"
+name = "Music"
+parent = "Workspace"
+sound_id = "rbxassetid://111111111"
+volume = 0.5
+looped = true
+
+[script]
+id = "main_server"
+name = "Main"
+parent = "ServerScriptService"
+type = "Script"
+source = """
+print("Hello from RBLXA")
+"""

@@ -1,0 +1,76 @@
+[place.meta.data]
+name = "RBLXA Final Demo"
+version = "1.0.0"
+creator = "RBLXA"
+description = "Complete Stage 07 feature example."
+
+[place.settings]
+gravity = 196.2
+streaming_enabled = true
+
+[folder]
+id = "map"
+name = "Map"
+parent = "Workspace"
+
+[[part]]
+id = "floor"
+name = "Floor"
+parent = "map"
+position = [0, 0, 0]
+size = [100, 1, 100]
+rotation = [0, 0, 0]
+anchored = true
+material = "Grass"
+color = "#4CAF50"
+
+[[part]]
+id = "wall"
+name = "Wall"
+parent = "map"
+position = [0, 5, 20]
+size = [30, 10, 1]
+rotation = [0, 15, 0]
+anchored = true
+material = "Concrete"
+color = [180, 180, 180]
+
+[spawn]
+id = "spawn"
+name = "Spawn"
+parent = "map"
+position = [0, 3, 0]
+size = [8, 1, 8]
+anchored = true
+
+[meshpart]
+id = "logo"
+name = "Logo"
+parent = "map"
+mesh_id = "rbxassetid://123456789"
+texture_id = "rbxassetid://987654321"
+position = [10, 4, 0]
+size = [4, 4, 4]
+anchored = true
+
+[script]
+id = "server"
+name = "Main"
+parent = "ServerScriptService"
+type = "Script"
+source = """
+local Players = game:GetService("Players")
+
+Players.PlayerAdded:Connect(function(player)
+    print(player.Name .. " joined!")
+end)
+"""
+
+[[3D.Object.File]]
+id = "tree_source"
+name = "TreeSource"
+parent = "map"
+path = "models/tree.obj"
+format = "obj"
+position = [20, 0, 20]
+scale = [1, 1, 1]
